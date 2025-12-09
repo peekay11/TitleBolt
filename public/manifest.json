@@ -1,0 +1,37 @@
+{
+  "name": "TitleBolt - AI Title Generator",
+  "short_name": "TitleBolt",
+  "description": "Generate click-worthy titles for YouTube, TikTok, Books & More with AI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities", "business"],
+  "shortcuts": [
+    {
+      "name": "Quick Generator",
+      "url": "/",
+      "description": "Generate titles instantly"
+    },
+    {
+      "name": "Advanced Generator",
+      "url": "/generator",
+      "description": "Generate with filters"
+    }
+  ]
+}
