@@ -5,8 +5,8 @@ import { PostHogProvider } from 'posthog-js/react'
 import './index.css'
 import App from './App.jsx'
 
-// Use development key that works with default CDN
-const CLERK_KEY = 'pk_test_cmVsYXRlZC1lZnQtNTAuY2xlcmsuYWNjb3VudHMuZGV2JA'
+// Use production key from environment variables
+const CLERK_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY || 'pk_test_cmVsYXRlZC1lZnQtNTAuY2xlcmsuYWNjb3VudHMuZGV2JA'
 
 const posthogOptions = {
   api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
