@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
+import { useNavigate } from 'react-router-dom';
 import { platforms } from '../utils/titleGenerator';
 import { generateTitlesWithAI } from '../utils/groqApi';
 import { checkRateLimit, incrementUsage, getTimeUntilReset } from '../utils/rateLimiter';
 import PlatformIcon from '../components/ui/PlatformIcon';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
-import TitleCard from '../components/features/TitleCard';
+
 import './Home.css';
 
 const Home = () => {
   const { isSignedIn } = useUser();
+  const navigate = useNavigate();
   const [topic, setTopic] = useState('');
-  const [titles, setTitles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -30,11 +31,11 @@ const Home = () => {
     
     try {
       const generated = await generateTitlesWithAI(topic);
-      setTitles(generated);
       if (!isSignedIn) incrementUsage();
+      // Redirect to Loading page first for maximum ad exposure
+      navigate('/loading', { state: { titles: generated } });
     } catch (err) {
       setError('Failed to generate titles. Please try again.');
-    } finally {
       setLoading(false);
     }
   };
@@ -74,16 +75,53 @@ const Home = () => {
           )}
         </section>
 
-        {titles.length > 0 && (
-          <section className="results">
-            <h2>Your Generated Titles ({titles.length})</h2>
-            <div className="titles-grid">
-              {titles.map((title, idx) => (
-                <TitleCard key={idx} title={title} />
-              ))}
+
+        
+        <section className="features">
+          <h2 style={{ textAlign: 'center', marginBottom: '40px', fontSize: '2.2rem' }}>
+            🚀 Maximize Your Content's Potential
+          </h2>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+            gap: '30px',
+            marginBottom: '40px'
+          }}>
+            <div style={{
+              padding: '30px',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border)',
+              borderRadius: '16px',
+              textAlign: 'center'
+            }}>
+              <div style={{ fontSize: '3rem', marginBottom: '16px' }}>📊</div>
+              <h3 style={{ marginBottom: '12px', color: 'var(--primary)' }}>Performance Analysis</h3>
+              <p style={{ color: 'var(--text-secondary)' }}>Get detailed insights on why your titles work and how to improve them</p>
             </div>
-          </section>
-        )}
+            <div style={{
+              padding: '30px',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border)',
+              borderRadius: '16px',
+              textAlign: 'center'
+            }}>
+              <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🎯</div>
+              <h3 style={{ marginBottom: '12px', color: 'var(--success)' }}>AI Optimization</h3>
+              <p style={{ color: 'var(--text-secondary)' }}>Transform good titles into click magnets with AI-powered suggestions</p>
+            </div>
+            <div style={{
+              padding: '30px',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border)',
+              borderRadius: '16px',
+              textAlign: 'center'
+            }}>
+              <div style={{ fontSize: '3rem', marginBottom: '16px' }}>📥</div>
+              <h3 style={{ marginBottom: '12px', color: 'var(--secondary)' }}>Export & Share</h3>
+              <p style={{ color: 'var(--text-secondary)' }}>Download your titles in multiple formats or share them instantly</p>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

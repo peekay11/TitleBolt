@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { useUser, SignInButton } from '@clerk/clerk-react';
+import { useNavigate } from 'react-router-dom';
 import { platforms, formats, genres, moods } from '../utils/titleGenerator';
 import { generateTitlesWithAI } from '../utils/groqApi';
 import Input from '../components/ui/Input';
 import Select from '../components/ui/Select';
 import Button from '../components/ui/Button';
-import TitleCard from '../components/features/TitleCard';
 import './Generator.css';
 
 const Generator = () => {
   const { isSignedIn } = useUser();
+  const navigate = useNavigate();
   
   if (!isSignedIn) {
     return (
@@ -31,7 +32,7 @@ const Generator = () => {
   const [format, setFormat] = useState('');
   const [genre, setGenre] = useState('');
   const [mood, setMood] = useState('');
-  const [titles, setTitles] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -41,10 +42,10 @@ const Generator = () => {
     setError('');
     try {
       const generated = await generateTitlesWithAI(topic, platform, format, genre, mood);
-      setTitles(generated);
+      // Redirect to Loading page first for maximum ad exposure
+      navigate('/loading', { state: { titles: generated } });
     } catch (err) {
       setError('Failed to generate titles. Please try again.');
-    } finally {
       setLoading(false);
     }
   };
@@ -107,16 +108,7 @@ const Generator = () => {
               </div>
             )}
 
-            {titles.length > 0 && (
-              <section className="results">
-                <h2>Generated Titles ({titles.length})</h2>
-                <div className="titles-list">
-                  {titles.map((title, idx) => (
-                    <TitleCard key={idx} title={title} />
-                  ))}
-                </div>
-              </section>
-            )}
+
           </div>
       </div>
     </div>
