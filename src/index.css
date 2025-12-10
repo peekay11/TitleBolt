@@ -44,6 +44,22 @@ body {
   padding: 0 20px;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+}
+
 .ad-slot {
   background: rgba(255, 255, 255, 0.05);
   border: 1px dashed var(--border);

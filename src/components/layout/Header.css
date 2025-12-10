@@ -41,7 +41,30 @@
   background-clip: text;
 }
 
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.mobile-menu-btn:hover {
+  background: var(--bg-dark);
+  color: var(--primary);
+}
+
 .nav-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-actions {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -97,19 +120,61 @@
     font-size: 26px;
   }
   
+  .mobile-menu-btn {
+    display: block;
+  }
+  
   .nav-links {
-    gap: 4px;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 80px 20px 20px;
+    gap: 0;
+    transition: right 0.3s ease;
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+  }
+  
+  .nav-links-open {
+    right: 0;
   }
   
   .nav-link {
-    padding: 8px 10px;
-    font-size: 13px;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+  
+  .nav-actions {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
   }
   
   .theme-toggle {
-    padding: 8px 10px;
-    font-size: 18px;
-    margin-left: 4px;
+    padding: 12px;
+    font-size: 20px;
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .auth-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
   }
 }
 
