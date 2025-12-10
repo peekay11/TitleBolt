@@ -9,7 +9,7 @@ import App from './App.jsx'
 const CLERK_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY || 'pk_test_cmVsYXRlZC1lZnQtNTAuY2xlcmsuYWNjb3VudHMuZGV2JA'
 
 const posthogOptions = {
-  api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
+  api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
 }
 
 // Unregister any existing service workers
