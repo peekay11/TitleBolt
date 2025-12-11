@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FaArrowRight, FaChartLine, FaDownload, FaRefresh } from 'react-icons/fa';
+import { FaArrowRight, FaChartLine, FaDownload, FaRedo } from 'react-icons/fa';
 import TitleCard from '../components/features/TitleCard';
 import AdSlot from '../components/features/AdSlot';
 
@@ -212,7 +212,7 @@ const Results = () => {
           onMouseOver={(e) => !loading && (e.target.style.transform = 'translateY(-2px)')}
           onMouseOut={(e) => e.target.style.transform = 'translateY(0)'}
         >
-          <FaRefresh /> Generate More
+          <FaRedo /> Generate More
         </button>
 
         <button 
