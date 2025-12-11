@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FaRobot, FaBrain, FaCheck, FaSpinner, FaClock } from 'react-icons/fa';
 
 
 const Loading = () => {
@@ -20,8 +21,8 @@ const Loading = () => {
 
       
       <div style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>
-          🤖 AI is Working Its Magic...
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+          <FaRobot style={{ color: 'var(--primary)' }} /> AI is Working Its Magic...
         </h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>
           Analyzing millions of high-performing titles to create yours
@@ -31,7 +32,7 @@ const Loading = () => {
       {/* Loading Animation */}
       <div style={{ marginBottom: '40px' }}>
         <div className="ai-loader">
-          <div className="brain">🧠</div>
+          <div className="brain"><FaBrain style={{ color: 'var(--primary)' }} /></div>
           <div className="dots">
             <span>.</span><span>.</span><span>.</span>
           </div>
@@ -53,7 +54,7 @@ const Loading = () => {
           color: 'white',
           borderRadius: '12px'
         }}>
-          ✓ Analyzing Topic
+          <FaCheck style={{ marginRight: '8px' }} /> Analyzing Topic
         </div>
         <div style={{
           padding: '20px',
@@ -61,7 +62,7 @@ const Loading = () => {
           color: 'white',
           borderRadius: '12px'
         }}>
-          🔄 Generating Titles
+          <FaSpinner style={{ marginRight: '8px' }} /> Generating Titles
         </div>
         <div style={{
           padding: '20px',
@@ -69,7 +70,7 @@ const Loading = () => {
           color: 'var(--text-secondary)',
           borderRadius: '12px'
         }}>
-          ⏳ Optimizing Results
+          <FaClock style={{ marginRight: '8px' }} /> Optimizing Results
         </div>
       </div>
 

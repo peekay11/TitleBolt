@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FaChartBar, FaEye, FaClock, FaArrowRight } from 'react-icons/fa';
+import { FaChartBar, FaEye, FaClock, FaArrowRight, FaLightbulb, FaCheck, FaExclamationTriangle } from 'react-icons/fa';
 import AdSlot from '../components/features/AdSlot';
 
 const Analysis = () => {
@@ -62,8 +62,8 @@ const Analysis = () => {
 
       
       <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>
-          📊 Title Performance Analysis
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+          <FaChartBar style={{ color: 'var(--primary)' }} /> Title Performance Analysis
         </h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>
           Deep dive into what makes your titles effective
@@ -172,8 +172,8 @@ const Analysis = () => {
           borderRadius: '12px',
           marginBottom: '30px'
         }}>
-          <h4 style={{ marginBottom: '16px', fontSize: '1.4rem' }}>
-            💡 Key Insights
+          <h4 style={{ marginBottom: '16px', fontSize: '1.4rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <FaLightbulb style={{ color: 'var(--primary)' }} /> Key Insights
           </h4>
           <ul style={{ 
             listStyle: 'none', 
@@ -182,19 +182,19 @@ const Analysis = () => {
             gap: '12px'
           }}>
             <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-              <span style={{ color: 'var(--success)', marginTop: '2px' }}>✓</span>
+              <FaCheck style={{ color: 'var(--success)', marginTop: '2px' }} />
               <span>Strong emotional words like "ultimate" and "secrets" drive clicks</span>
             </li>
             <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-              <span style={{ color: 'var(--success)', marginTop: '2px' }}>✓</span>
+              <FaCheck style={{ color: 'var(--success)', marginTop: '2px' }} />
               <span>Number-based titles (like "10 ways") perform 73% better</span>
             </li>
             <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-              <span style={{ color: '#f59e0b', marginTop: '2px' }}>⚠</span>
+              <FaExclamationTriangle style={{ color: '#f59e0b', marginTop: '2px' }} />
               <span>Consider adding year "2025" for better SEO performance</span>
             </li>
             <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-              <span style={{ color: '#f59e0b', marginTop: '2px' }}>⚠</span>
+              <FaExclamationTriangle style={{ color: '#f59e0b', marginTop: '2px' }} />
               <span>Title length could be optimized for better mobile display</span>
             </li>
           </ul>

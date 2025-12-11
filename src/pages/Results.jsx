@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FaArrowRight, FaChartLine, FaDownload, FaRedo } from 'react-icons/fa';
+import { FaArrowRight, FaChartLine, FaDownload, FaRedo, FaBullseye, FaEye, FaTrophy } from 'react-icons/fa';
 import TitleCard from '../components/features/TitleCard';
 import AdSlot from '../components/features/AdSlot';
 
@@ -68,8 +68,8 @@ const Results = () => {
 
       
       <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>
-          🎯 Your Generated Titles
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+          <FaBullseye style={{ color: 'var(--primary)' }} /> Your Generated Titles
         </h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>
           Here are your AI-powered titles ready to boost engagement
@@ -101,7 +101,7 @@ const Results = () => {
               onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
               onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
             >
-              👀 Preview
+              <FaEye /> Preview
             </button>
           </div>
         ))}
@@ -164,7 +164,7 @@ const Results = () => {
           onMouseOver={(e) => e.target.style.transform = 'translateY(-2px)'}
           onMouseOut={(e) => e.target.style.transform = 'translateY(0)'}
         >
-          🏆 Compare Titles
+          <FaTrophy /> Compare Titles
         </button>
 
         <button 

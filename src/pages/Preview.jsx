@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FaPlay, FaEye, FaThumbsUp, FaShare } from 'react-icons/fa';
+import { FaPlay, FaEye, FaThumbsUp, FaShare, FaDesktop, FaChartLine } from 'react-icons/fa';
 
 
 const Preview = () => {
@@ -30,10 +30,10 @@ const Preview = () => {
   };
 
   const mockPlatforms = [
-    { name: 'YouTube', color: '#FF0000', icon: '📺' },
-    { name: 'TikTok', color: '#000000', icon: '🎵' },
-    { name: 'Instagram', color: '#E4405F', icon: '📸' },
-    { name: 'Twitter', color: '#1DA1F2', icon: '🐦' }
+    { name: 'YouTube', color: '#FF0000', icon: <FaPlay /> },
+    { name: 'TikTok', color: '#000000', icon: <FaPlay /> },
+    { name: 'Instagram', color: '#E4405F', icon: <FaEye /> },
+    { name: 'Twitter', color: '#1DA1F2', icon: <FaShare /> }
   ];
 
   return (
@@ -41,8 +41,8 @@ const Preview = () => {
 
       
       <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>
-          👀 Title Preview Simulator
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+          <FaDesktop style={{ color: 'var(--primary)' }} /> Title Preview Simulator
         </h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>
           See how your title performs across different platforms
@@ -130,8 +130,8 @@ const Preview = () => {
         borderRadius: '12px',
         marginBottom: '40px'
       }}>
-        <h3 style={{ marginBottom: '20px', fontSize: '1.5rem' }}>
-          📈 Predicted Performance
+        <h3 style={{ marginBottom: '20px', fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <FaChartLine style={{ color: 'var(--primary)' }} /> Predicted Performance
         </h3>
         <div style={{ 
           display: 'grid', 
