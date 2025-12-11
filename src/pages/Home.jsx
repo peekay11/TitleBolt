@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
 import { platforms } from '../utils/titleGenerator';
-import { generateTitlesWithAI } from '../utils/groqApi';
+import { generateRobustTitles } from '../utils/multiApiGenerator';
 import { checkRateLimit, incrementUsage, getTimeUntilReset } from '../utils/rateLimiter';
 import PlatformIcon from '../components/ui/PlatformIcon';
 import Input from '../components/ui/Input';
@@ -31,7 +31,7 @@ const Home = () => {
     }
     
     try {
-      const generated = await generateTitlesWithAI(topic);
+      const generated = await generateRobustTitles(topic);
       if (!isSignedIn) incrementUsage();
       // Redirect to Loading page first for maximum ad exposure
       navigate('/loading', { state: { titles: generated } });
