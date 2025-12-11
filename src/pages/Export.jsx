@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FaDownload, FaCopy, FaShare, FaPrint, FaFilePdf, FaFileExcel } from 'react-icons/fa';
+import { FaDownload, FaCopy, FaShare, FaPrint, FaFilePdf, FaFileExcel, FaFileExport, FaFileAlt, FaBolt, FaEye } from 'react-icons/fa';
 
 
 const Export = () => {
@@ -143,8 +143,8 @@ const Export = () => {
 
       
       <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>
-          📥 Export & Save Your Titles
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+          <FaFileExport style={{ color: 'var(--primary)' }} /> Export & Save Your Titles
         </h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>
           Download, share, or save your AI-generated titles in multiple formats
@@ -200,8 +200,8 @@ const Export = () => {
 
       {/* Export Format Selection */}
       <div style={{ marginBottom: '40px' }}>
-        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem' }}>
-          📄 Choose Export Format
+        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <FaFileAlt style={{ color: 'var(--primary)' }} /> Choose Export Format
         </h3>
         <div style={{ 
           display: 'grid', 
@@ -237,8 +237,8 @@ const Export = () => {
 
       {/* Quick Actions */}
       <div style={{ marginBottom: '40px' }}>
-        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem' }}>
-          ⚡ Quick Actions
+        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <FaBolt style={{ color: 'var(--primary)' }} /> Quick Actions
         </h3>
         <div style={{ 
           display: 'grid', 
@@ -317,8 +317,8 @@ const Export = () => {
 
       {/* Title Preview */}
       <div style={{ marginBottom: '40px' }}>
-        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem' }}>
-          👀 Preview Your Titles
+        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <FaEye style={{ color: 'var(--primary)' }} /> Preview Your Titles
         </h3>
         <div style={{
           maxHeight: '300px',

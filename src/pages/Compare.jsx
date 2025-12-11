@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FaCrown, FaFire, FaChartLine } from 'react-icons/fa';
+import { FaCrown, FaFire, FaChartLine, FaTrophy, FaMedal, FaRocket } from 'react-icons/fa';
 
 
 const Compare = () => {
@@ -59,8 +59,8 @@ const Compare = () => {
 
       
       <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>
-          🏆 Title Performance Comparison
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+          <FaTrophy style={{ color: 'var(--primary)' }} /> Title Performance Comparison
         </h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>
           See which titles will perform best and why
@@ -80,8 +80,8 @@ const Compare = () => {
           <div style={{ fontSize: '3rem', marginBottom: '16px' }}>
             <FaCrown />
           </div>
-          <h2 style={{ marginBottom: '12px', fontSize: '1.8rem' }}>
-            🥇 Top Performing Title
+          <h2 style={{ marginBottom: '12px', fontSize: '1.8rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+            <FaMedal style={{ color: '#FFD700' }} /> Top Performing Title
           </h2>
           <p style={{ 
             fontSize: '1.3rem', 
@@ -130,8 +130,8 @@ const Compare = () => {
 
       {/* Comparison Table */}
       <div style={{ marginBottom: '40px' }}>
-        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem' }}>
-          📊 Detailed Comparison
+        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <FaChartLine style={{ color: 'var(--primary)' }} /> Detailed Comparison
         </h3>
         <div style={{ display: 'grid', gap: '16px' }}>
           {comparison.map((item, index) => (
@@ -253,7 +253,7 @@ const Compare = () => {
                   }
                 }}
               >
-                {item.rank === 1 ? '🚀 Optimize Winner' : 'Optimize This Title'}
+                {item.rank === 1 ? <><FaRocket /> Optimize Winner</> : 'Optimize This Title'}
               </button>
             </div>
           ))}

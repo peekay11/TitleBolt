@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FaLightbulb, FaRocket, FaDownload, FaArrowLeft } from 'react-icons/fa';
+import { FaLightbulb, FaRocket, FaDownload, FaArrowLeft, FaCog, FaChartLine } from 'react-icons/fa';
 import AdSlot from '../components/features/AdSlot';
 import TitleCard from '../components/features/TitleCard';
 
@@ -85,8 +85,8 @@ const Optimize = () => {
 
       
       <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>
-          🚀 Title Optimization Lab
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+          <FaCog style={{ color: 'var(--primary)' }} /> Title Optimization Lab
         </h1>
         <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>
           Transform your titles into click magnets with AI-powered optimization
@@ -112,8 +112,8 @@ const Optimize = () => {
 
       {/* Optimization Tips */}
       <div style={{ marginBottom: '40px' }}>
-        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem' }}>
-          💡 Optimization Strategies
+        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <FaLightbulb style={{ color: 'var(--primary)' }} /> Optimization Strategies
         </h3>
         <div style={{ 
           display: 'grid', 
@@ -164,8 +164,8 @@ const Optimize = () => {
 
       {/* Optimized Titles */}
       <div style={{ marginBottom: '40px' }}>
-        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem' }}>
-          ✨ AI-Optimized Versions
+        <h3 style={{ marginBottom: '20px', fontSize: '1.8rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <FaRocket style={{ color: 'var(--primary)' }} /> AI-Optimized Versions
         </h3>
         
         {loading ? (
@@ -206,8 +206,8 @@ const Optimize = () => {
           borderRadius: '12px',
           marginBottom: '40px'
         }}>
-          <h4 style={{ marginBottom: '16px', fontSize: '1.4rem' }}>
-            📈 Expected Performance Boost
+          <h4 style={{ marginBottom: '16px', fontSize: '1.4rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <FaChartLine style={{ color: 'var(--primary)' }} /> Expected Performance Boost
           </h4>
           <div style={{ 
             display: 'grid', 
