@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useUser, SignInButton } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
 import { platforms, formats, genres, moods } from '../utils/titleGenerator';
-import { generateRobustTitles } from '../utils/multiApiGenerator';
+import { generateUltraRobustTitles } from '../utils/ultraRobustGenerator';
 import Input from '../components/ui/Input';
 import Select from '../components/ui/Select';
 import Button from '../components/ui/Button';
@@ -41,7 +41,7 @@ const Generator = () => {
     setLoading(true);
     setError('');
     try {
-      const generated = await generateRobustTitles(topic, platform, format, genre, mood);
+      const generated = await generateUltraRobustTitles(topic, platform, format, genre, mood);
       // Redirect to Loading page first for maximum ad exposure
       navigate('/loading', { state: { titles: generated } });
     } catch (err) {

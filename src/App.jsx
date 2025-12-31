@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
 import Home from './pages/Home';
+import EnhancedHome from './pages/EnhancedHome';
 import Generator from './pages/Generator';
 import Loading from './pages/Loading';
 import Results from './pages/Results';
@@ -19,7 +20,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
+          <Route index element={<EnhancedHome />} />
+          <Route path="simple" element={<Home />} />
           <Route path="generator" element={<Generator />} />
           <Route path="loading" element={<Loading />} />
           <Route path="results" element={<Results />} />
