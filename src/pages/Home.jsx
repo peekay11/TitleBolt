@@ -4,10 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { platforms } from '../utils/titleGenerator';
 import { generateUltraRobustTitles } from '../utils/ultraRobustGenerator';
 import { checkRateLimit, incrementUsage, getTimeUntilReset } from '../utils/rateLimiter';
+import { updateTrendingTopic } from '../utils/csvUtils';
 import PlatformIcon from '../components/ui/PlatformIcon';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
-import { FaRocket, FaChartBar, FaBullseye, FaDownload } from 'react-icons/fa';
+import LoadingSkeleton from '../components/ui/LoadingSkeleton';
+import TrendingTopics from '../components/features/TrendingTopics';
+import { FaRocket, FaChartBar, FaBullseye, FaDownload, FaMagic } from 'react-icons/fa';
 
 import './Home.css';
 
@@ -33,6 +36,10 @@ const Home = () => {
     try {
       const generated = await generateUltraRobustTitles(topic);
       if (!isSignedIn) incrementUsage();
+      
+      // Update trending topics
+      updateTrendingTopic(topic);
+      
       // Redirect to Loading page first for maximum ad exposure
       navigate('/loading', { state: { titles: generated } });
     } catch (err) {
@@ -41,18 +48,22 @@ const Home = () => {
     }
   };
 
+  const handleTrendingTopicClick = (trendingTopic) => {
+    setTopic(trendingTopic);
+  };
+
   return (
-    <div className="home">
+    <div className="home page-transition">
       <div className="container">
         <section className="hero">
           <h1 className="hero-title">
-            Generate Click-Worthy Titles in <span className="gradient-text">Seconds</span>
+            <span className="brand-name">TitleBolt</span> - Generate Click-Worthy Titles in <span className="gradient-text">Seconds</span>
           </h1>
           <p className="hero-subtitle">
-            AI-powered title generation for YouTube, TikTok, Instagram, Books, Blogs & More
+            The ultimate AI-powered title generator for YouTube, TikTok, Instagram, Books, Blogs & More
           </p>
           
-          <div className="platforms-showcase">
+          <div className="platforms-showcase stagger-animation">
             {platforms.map(platform => (
               <PlatformIcon key={platform.id} platform={platform} />
             ))}
@@ -64,57 +75,67 @@ const Home = () => {
               onChange={(e) => setTopic(e.target.value)}
               placeholder="Enter your topic or keyword..."
               required
+              className={error ? 'error-shake' : ''}
             />
-            <Button type="submit" size="lg" disabled={loading}>
-              {loading ? 'Generating...' : 'Generate Titles'}
+            <Button 
+              type="submit" 
+              size="lg" 
+              disabled={loading}
+              className={loading ? 'loading-pulse' : ''}
+            >
+              {loading ? (
+                <>
+                  <FaMagic className="spin" /> Generating...
+                </>
+              ) : (
+                'Generate Titles'
+              )}
             </Button>
           </form>
           {error && (
-            <div className="error-message">
+            <div className="error-message error-shake">
               <p>{error}</p>
             </div>
           )}
+          
+          {loading && (
+            <div className="loading-preview">
+              <LoadingSkeleton type="title" count={3} />
+            </div>
+          )}
         </section>
-
-
+        
+        {/* Trending Topics Section */}
+        <TrendingTopics onTopicClick={handleTrendingTopicClick} />
         
         <section className="features">
           <h2 style={{ textAlign: 'center', marginBottom: '40px', fontSize: '2.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
             <FaRocket style={{ color: 'var(--primary)' }} /> Maximize Your Content's Potential
           </h2>
-          <div style={{ 
+          <div className="features-grid stagger-animation" style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
             gap: '30px',
             marginBottom: '40px'
           }}>
-            <div style={{
+            <div className="glass-card" style={{
               padding: '30px',
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border)',
-              borderRadius: '16px',
               textAlign: 'center'
             }}>
               <div style={{ fontSize: '3rem', marginBottom: '16px', color: 'var(--primary)' }}><FaChartBar /></div>
               <h3 style={{ marginBottom: '12px', color: 'var(--primary)' }}>Performance Analysis</h3>
               <p style={{ color: 'var(--text-secondary)' }}>Get detailed insights on why your titles work and how to improve them</p>
             </div>
-            <div style={{
+            <div className="glass-card" style={{
               padding: '30px',
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border)',
-              borderRadius: '16px',
               textAlign: 'center'
             }}>
               <div style={{ fontSize: '3rem', marginBottom: '16px', color: 'var(--success)' }}><FaBullseye /></div>
               <h3 style={{ marginBottom: '12px', color: 'var(--success)' }}>AI Optimization</h3>
               <p style={{ color: 'var(--text-secondary)' }}>Transform good titles into click magnets with AI-powered suggestions</p>
             </div>
-            <div style={{
+            <div className="glass-card" style={{
               padding: '30px',
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border)',
-              borderRadius: '16px',
               textAlign: 'center'
             }}>
               <div style={{ fontSize: '3rem', marginBottom: '16px', color: 'var(--secondary)' }}><FaDownload /></div>

@@ -14,6 +14,52 @@
   line-height: 1.2;
 }
 
+.brand-name {
+  color: var(--primary);
+  font-weight: 900;
+  font-size: 1.1em;
+  text-shadow: var(--shadow-sm);
+  letter-spacing: -1px;
+}
+
+.loading-preview {
+  margin-top: 40px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 2px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.platforms-showcase {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.features-grid {
+  animation-delay: 0.3s;
+}
+
 .gradient-text {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;

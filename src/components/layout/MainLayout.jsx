@@ -2,12 +2,12 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 
-const MainLayout = () => {
+const MainLayout = ({ children }) => {
   return (
     <>
       <Header />
       <main style={{ minHeight: '100vh' }}>
-        <Outlet />
+        {children}
       </main>
       <Footer />
     </>

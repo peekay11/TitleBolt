@@ -42,7 +42,9 @@ const Header = () => {
           
           <div className={`nav-links ${isMenuOpen ? 'nav-links-open' : ''}`}>
             <Link to="/" className="nav-link" onClick={closeMenu}>Home</Link>
-            {isSignedIn && <Link to="/generator" className="nav-link" onClick={closeMenu}>Advanced</Link>}
+            <Link to="/generator" className="nav-link" onClick={closeMenu}>Generator</Link>
+            <Link to="/results" className="nav-link" onClick={closeMenu}>Results</Link>
+            <Link to="/analysis" className="nav-link" onClick={closeMenu}>Analysis</Link>
             <Link to="/youtube-title-generator" className="nav-link" onClick={closeMenu}>YouTube</Link>
             <Link to="/tiktok-hook-generator" className="nav-link" onClick={closeMenu}>TikTok</Link>
             <Link to="/book-chapter-title-ideas" className="nav-link" onClick={closeMenu}>Books</Link>
